@@ -14,7 +14,11 @@ import sys
 from contextlib import contextmanager
 from itertools import count, repeat
 from time import sleep
-from uuid import UUID, uuid4 as _uuid4, _uuid_generate_random
+from uuid import UUID, uuid4 as _uuid4
+try:
+    from uuid import _uuid_generate_random
+except ImportError:
+    _uuid_generate_random = None
 
 from .encoding import safe_repr as _safe_repr
 
